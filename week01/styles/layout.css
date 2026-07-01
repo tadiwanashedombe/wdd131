@@ -1,0 +1,53 @@
+:root{
+    --primary-color: white;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+header{
+    background-color:#333;
+}
+h1{
+    color: var(--primary-color);
+    padding:1rem 0 3rem 1rem; 
+}
+nav{
+    background-color: black;
+    padding: 1.7rem;
+}
+.nav-bar{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+.nav-bar a{
+    color: var(--primary-color);
+    text-decoration: none;
+    text-align: center;
+}
+main{
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+}
+section{
+    background-color: grey;
+}
+section h2 , aside h2{
+    padding:1rem 0 3rem 1rem; 
+}
+footer{
+    padding: 5rem 0;
+    background-color: #333;
+    color:  var(--primary-color);
+    text-align: center;
+}
+footer h2{
+    margin-top: -4rem;
+}
