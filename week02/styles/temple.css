@@ -1,0 +1,50 @@
+body {
+    text-align: center;
+}
+
+header,
+footer {
+    background-color: black;
+    color: white;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+header p,
+footer p {
+    padding: 12px;
+}
+
+main {
+    width: 350px;
+    margin: 0 auto;
+}
+
+img {
+    width: 350px;
+    height: auto;
+    box-shadow: 0 -8px 15px 4px darkgrey;
+}
+
+section {
+    background-color: rgb(192, 192, 192);
+    margin-top: 15px;
+    padding: 1px;
+    text-align: left;
+}
+
+section h2 {
+    margin: 0px 10px 0px 10px;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
+}
+
+section p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+li {
+    padding-bottom: 5px;
+}
