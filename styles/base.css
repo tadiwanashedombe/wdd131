@@ -22,7 +22,7 @@ header {
     font-style: normal;
 }
 
-.course-title {
+#course-title {
     display: block;
     text-align: center;
     background-color: var(--primary-color);
