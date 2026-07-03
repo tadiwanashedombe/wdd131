@@ -1,0 +1,114 @@
+:root{
+    --primary-color:rgb(31, 78, 109);
+    --accent1 : white;
+}
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.header-span{
+    display: block;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--accent1);
+    padding: 2rem 0;
+}
+.nav-bar ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+.nav-bar a{
+    text-decoration: none;
+    color: var(--accent1);
+}
+.nav-bar{
+    background-color:rgb(54, 54, 54);
+    padding: 1.2rem 0;
+}
+.main{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    max-width: 999px;
+}
+main h1{
+    margin: 1rem 0;
+    align-content: center;
+    text-align: center;
+}
+.card{
+    border: 1px solid black;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: #eee;
+}
+.heading{
+    border-radius: 8px 8px 0 0;
+    background-color: var(--primary-color);
+    padding: .7rem;
+    text-align: center;
+    color: var(--accent1);
+}
+.about-me,.capital{
+    margin: 1rem;
+}
+.about-me{
+    display: grid;
+}
+
+.about-me img{
+    width: 150px;
+    height: auto;
+    margin-left: 1rem;
+
+}
+
+.capital{
+    display: grid;
+}
+.capital img{
+    width: 180px;
+    margin-right: 1rem;
+}
+
+.capital p,.about-me img{
+    grid-column: 2/2;
+}
+h3{
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin: 0 9rem;
+}
+figure figcaption{
+    margin-top: 4px;
+    font-style: italic;
+}
+ 
+.resources{
+    height:80%;
+align-content: center;    
+} 
+.resources ul{
+    list-style:circle;
+    margin-left: 1rem;
+    padding: 1rem;
+}
+.resources li{
+    padding-top: 1rem;
+}
+
+footer{
+    text-align: center;
+    margin-top: .4rem;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    color: var(--accent1);
+}
