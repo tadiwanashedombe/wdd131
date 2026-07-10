@@ -6,4 +6,5 @@ hamButton.addEventListener("click", () => {
     hamButton.classList.toggle("open");
 });
 
+year.textContent = new Date().getFullYear();
 document.getElementById("lastModified").innerHTML = document.lastModified;
