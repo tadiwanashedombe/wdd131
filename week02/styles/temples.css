@@ -1,0 +1,36 @@
+@media only screen and (max-width: 520px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        flex-wrap: wrap;
+        position: relative;
+    }
+    
+    #menu {
+        top:1rem;
+        right: 1rem;
+        display: block;
+    }
+    
+    nav {
+        width: 100%;
+        position:absolute;
+        top:2.7rem;
+        right: 0;
+        display: none; 
+    }
+    
+    nav.open {
+        display: block; 
+    }
+    
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+
+}
