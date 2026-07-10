@@ -1,5 +1,6 @@
 const hamButton = document.querySelector("#menu");
 const navigation = document.querySelector("nav");
+const year = document.querySelector("#currentyear");
 
 hamButton.addEventListener("click", () => {
     navigation.classList.toggle("open");
