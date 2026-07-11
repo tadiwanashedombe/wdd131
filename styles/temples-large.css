@@ -63,6 +63,9 @@ nav a{
 nav li:hover{
     background-color: rgba(216, 216, 216, 0.63);
 }
+nav li:hover a {
+    color: #111; 
+}
 nav a:hover{
     border-bottom: 5px solid black;
 }
