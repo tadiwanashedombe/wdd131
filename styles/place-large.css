@@ -60,6 +60,15 @@ section h2{
     bottom: 1rem;
     right: 1rem;
 }
+.weather h2::after{
+    content: "\26C5";
+    margin-left: .4rem;
+}
+
+.weather-svg img{
+    display: none;
+    width: 95px;
+}
 footer {
     padding: 1rem;
     background-color: var(--primary-color);
