@@ -76,3 +76,6 @@ footer {
     font-size: larger;
     text-align: center;
 }
+footer p{
+    margin: .3rem 0;
+}
