@@ -1,0 +1,69 @@
+:root {
+    --primary-color: white;
+    --accent1: green;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--primary-color);
+    font-size: xx-large;
+    padding: 1rem;
+    text-align: center;
+    color: var(--accent1);
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section {
+    background-color: rgba(255, 255, 255, 0.534);
+    box-shadow: 0px 4px 10px 0px rgb(0,0,0,0.1);
+    padding: 1rem;
+    
+}
+section h2{
+    background-color: var(--accent1);
+    color: var(--primary-color);
+    padding: 1rem;
+    margin-left:-1.7rem;
+
+}
+.data{
+    margin-left:1.4rem ;
+    position: absolute;
+    top:1rem;
+}
+.weather{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+footer {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--accent1);
+    font-size: larger;
+    text-align: center;
+}
