@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cote D'ivoire</title>
+    <meta name="description"
+        content="Cote D'Ivoire stats like te weather and population responsive to different device widths">
+    <meta name="author" content="Tadiwanashe Sean Dombe">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="styles/place-large.css" rel="stylesheet">
+    <link href="styles/place.css" rel="stylesheet">
+    <script src="scripts/place.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Cote D'Ivoire</h1>
+    </header>
+    <main>
+        <div class="hero">
+            <picture>
+                <source media="(min-width: 1000px)" srcset="images/hero-large.webp">
+                <source media="(min-width: 600px)" srcset="images/hero-medium.webp">
+                <img src="images/hero-small.webp" alt="Abidjan Ivory Coast Temple" width="1500" height="750">
+            </picture>
+
+            <section class="data">
+                <h2>Data</h2>
+                <p><strong>Area: </strong><span>322,462km<sup>2</sup> </span></p>
+                <p><strong>Population: </strong><span>31,500,000</span> </p>
+                <p><strong>Capital: </strong><span>Yamoussoukro</span></p>
+                <p><strong>Languages: </strong><span>English, French</span></p>
+                <p><strong>Currency: </strong><span>West African CFA franc (XOF)</span></p>
+                <p><strong>Time Zone: </strong><span>UTC+00:00 (GMT)</span></p>
+                <p><strong>Calling Code: </strong><span>+255</span></p>
+                <p><strong>Internet TLD: </strong><span>.ci</span></p>
+            </section>
+
+            <section class="weather">
+                <h2>Weather</h2>
+                <span class="weather-svg">
+                    <img src="images/weather.svg" alt="Partly Cloudy Weather Icon ">
+                </span>
+                <p><strong>Temperature: </strong><span id="temperature" ></span></p>
+                <p><strong>Conditions: </strong><span>Partly Cloudy</span></p>
+                <p><strong>Wind: </strong><span id="wind"></span></p>
+                <p><strong>Wind Chill: </strong><span id="windchill" ></span></p>
+            </section>
+        </div>
+
+    </main>
+    <footer>
+        <p>
+            ©️<span id="currentyear"></span> Tadiwanashe Dombe - Zimbabwe
+        </p>
+        <p>Cote D'Ivoire</p>
+        <p id="lastModified">
+
+        </p>
+    </footer>
+</body>
+
+</html>
