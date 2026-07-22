@@ -1,0 +1,11 @@
+TheGaLLeRY
+
+in the mobile view they are already showing the options to delete
+
+index + 3pages{
+	gallery -> see all photos 
+	manage -> create collectionsn,upload photos,
+	collection -> deal with one selected collection 
+}
+
+for the create new collection add the content =  and the pseudo-classes b4 and after
