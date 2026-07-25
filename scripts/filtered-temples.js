@@ -101,7 +101,7 @@ function showTemples(temples, pageTitle) {
 
 
     temples.forEach((element,index) => {
-        const loading = index == 0 || 1? "eager" : "lazy";
+        const loading = index == 0? "eager" : "lazy";
         const fetchPriority = index === 0 ? "high" : "auto";
 
         const card = document.createElement("div");

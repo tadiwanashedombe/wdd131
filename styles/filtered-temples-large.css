@@ -121,6 +121,7 @@ p {
 figure {
     margin: 1rem;
     overflow: hidden;
+    width: 100%;
     aspect-ratio: 3/2;
     background-color: #f0f0f0;
 }
