@@ -95,8 +95,13 @@ const temples = [
 
 
 function showTemples(temples, pageTitle) {
+    
     containerTitle.innerHTML = pageTitle;
     imgContainer.innerHTML = '';
+
+    const loading = i == 0?"eager":"lazy";
+    const fetchPriority = index === 0? "high" : "auto";
+
     temples.forEach(element => {
         const card = document.createElement("div")
         card.className = "card";
@@ -107,7 +112,12 @@ function showTemples(temples, pageTitle) {
     <p><b>Dedication:</b>${element.dedicated}</p>
     <p><b>Size: </b>${element.area}</p>
     <figure>
-    <img src="${element.imageUrl}" alt='${element.templeName}' width='300' height='200' loading='lazy' >
+    <img src="${element.imageUrl}" 
+         alt='${element.templeName}' 
+         width='300' 
+         height='200' 
+         loading='${loading}'
+         fetchPriority='${fetchPriority}' >
     </figure>` ;
 
         imgContainer.appendChild(card);
