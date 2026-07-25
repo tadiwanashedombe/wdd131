@@ -95,15 +95,16 @@ const temples = [
 
 
 function showTemples(temples, pageTitle) {
-    
+
     containerTitle.innerHTML = pageTitle;
     imgContainer.innerHTML = '';
 
-    const loading = i == 0?"eager":"lazy";
-    const fetchPriority = index === 0? "high" : "auto";
 
-    temples.forEach(element => {
-        const card = document.createElement("div")
+    temples.forEach((element,index) => {
+        const loading = index == 0 || 1? "eager" : "lazy";
+        const fetchPriority = index === 0 ? "high" : "auto";
+
+        const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
     
@@ -151,7 +152,7 @@ document.querySelector("#new").addEventListener("click", (event) => {
 document.querySelector("#large").addEventListener("click", (event) => {
     const old = temples.filter(temple => {
         const squareFeet = parseInt(temple.area);
-        return squareFeet < 90000;
+        return squareFeet > 90000;
     });
     showTemples(old, "Temples With More Than 90,000ft<sup>2</sup>");
 });
@@ -165,7 +166,7 @@ document.querySelector("#small").addEventListener("click", (event) => {
     showTemples(old, "Temples With Less Than 10,000ft<sup>2</sup>");
 });
 
-showTemples(temples,"Home")
+showTemples(temples, "Home")
 
 
 
