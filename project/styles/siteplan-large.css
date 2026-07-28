@@ -14,7 +14,8 @@ body {
 
 header,
 footer {
-    background-color: #929292;
+    background-color: #bababa;
+    color:#000;
     text-align: center;
     padding: 2rem 0;
 }
@@ -88,8 +89,8 @@ section h2 {
 }
 
 .block2 {
-    background-color: #929292;
-    color: #fff;
+    background-color: #bababa;
+    color: #000;
 }
 
 .block3 {
@@ -102,7 +103,7 @@ section h2 {
 }
 
 .block4 a {
-    color: #fff;
+    color: #2d2d2d;
     text-decoration: none;
 }
 .fonts {
@@ -114,7 +115,8 @@ section h2 {
 
 .font { 
     display: flex;
-    background-color: #929292;
+    background-color: #bababa;
+    color: #000;
     justify-content: center;
     align-items: center;
     font-size: large;
