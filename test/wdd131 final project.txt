@@ -3,9 +3,12 @@ TheGaLLeRY
 in the mobile view they are already showing the options to delete
 
 index + 3pages{
-	gallery -> see all photos 
-	manage -> create collectionsn,upload photos,
+	gallery -> see all photos{no of all photos}
+	manage -> create collections,upload photos,
 	collection -> deal with one selected collection 
 }
 
-for the create new collection add the content =  and the pseudo-classes b4 and after
+for the create new collection add the content = "+" and the pseudo-classes b4 and after
+
+
+{I will be creating a photo management gallery(TheGaLLeRY).The site will have 4 pages index.html, gallery.html, manage.html and collection.html. The index.html will have a an overview of the collection of  all the photos with a feature to create a collection and more. The gallery.html will host all of the photos. The manage.html will handle the uploading of the photos and possible create collections or edit existing ones. The users will be seeing their selected collection in the collection.html where all the photos in a collection will be displayed well, they can also delete some of the photos. I chose this subject because I grew up using google photos to store and manage my photos but lately it has been getting laggy so i thought i'd create my own version with lesser tools to make it lighter.}
