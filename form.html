@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review Form</title>
+    <meta name="description" content="Displaying and html with various input types ">
+    <meta name="author" content="Tadiwanashe Dombe">
+
+    <link rel="stylesheet" href="styles/form.css">
+    <script src="scripts/form.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Product Review</h1>
+    </header>
+    <main>
+        <form action="review.html" method="get">
+            <div class="form-group">
+                <label>
+                    Product Name
+                    <span class="required">*</span>
+                    <select name="productName" id="products" required>
+                        <option value="" disabled selected>Choose a Product</option>
+                    </select>
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label class="rating">Overall Rating <span class="required">*</span> </label>
+                <div class="star-rating">
+                    <input type="radio" name="stars" id="star-a" value="5"  />
+                    <label for="star-a"></label>
+                    <input type="radio" name="stars" id="star-b" value="4"  />
+                    <label for="star-b"></label>
+                    <input type="radio" name="stars" id="star-c" value="3"  />
+                    <label for="star-c"></label>
+                    <input type="radio" name="stars" id="star-d" value="2"  />
+                    <label for="star-d"></label>
+                    <input type="radio" name="stars" id="star-e" value="1" required />
+                    <label for="star-e"></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Date of Installation <span class="required">*</span> <input type="date" name="InstallationDate" id="installDate" required> </label>
+            </div>
+
+            <div class="form-group">
+                <label>Which features did you find useful in the product? <br> <span class="features-options optional">(Check all that apply)</span></label>
+                <label for="durability"><input type="checkbox" id="durability" name="durability"value="durability">Durability</label>
+                
+                <label for="easeOfUse"><input type="checkbox" id="easeOfUse" name="easeOfUse"value="easeOfUse">Ease Of Use</label>
+
+                <label for="performance"><input type="checkbox" id="performance" name="performance"value="performance">Performance</label>
+
+                <label for="design"><input type="checkbox" id="design" name="design"value="design">Design</label>
+            </div>
+
+            <div class="form-group">
+                <label for="writtenReview">
+                    Written Review <span class="optional">(Optional)</span>
+                    <textarea rows="3" name="writtenReview" id="writtenReview"></textarea>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username <span class="optional">(Optional)</span> <input type="text" name="username" id="username"></label>
+            </div>
+
+            <div class="submit">
+                <input type="submit" value="Post Review">
+            </div>
+        </form>
+    </main>
+    <footer>
+        ©️<span class="getyear"></span> Tadiwanashe Dombe - Product Review
+        <p id="lastModified"></p>
+    </footer>
+</body>
+</html>
