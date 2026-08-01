@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Review Form</title>
-    <meta name="description" content="Displaying and html with various input types ">
+    <meta name="description" content="Displaying and html with various input types in another review page with js">
     <meta name="author" content="Tadiwanashe Dombe">
 
+    <link rel="stylesheet" href="styles/form-large.css">
     <link rel="stylesheet" href="styles/form.css">
+
     <script src="scripts/form.js" defer></script>
 </head>
 
@@ -19,11 +21,11 @@
     <main>
         <form action="review.html" method="get">
             <div class="form-group">
-                <label>
+                <label for="products">
                     Product Name
                     <span class="required">*</span>
                     <select name="productName" id="products" required>
-                        <option value="" disabled selected>Choose a Product</option>
+                        <option value="" disabled selected>Select a Product ...</option>
                     </select>
                 </label>
             </div>
@@ -31,32 +33,32 @@
             <div class="form-group">
                 <label class="rating">Overall Rating <span class="required">*</span> </label>
                 <div class="star-rating">
-                    <input type="radio" name="stars" id="star-a" value="5"  />
+                    <input type="radio" name="stars" id="star-a" value="5" required>
                     <label for="star-a"></label>
-                    <input type="radio" name="stars" id="star-b" value="4"  />
+                    <input type="radio" name="stars" id="star-b" value="4" required>
                     <label for="star-b"></label>
-                    <input type="radio" name="stars" id="star-c" value="3"  />
+                    <input type="radio" name="stars" id="star-c" value="3" required>
                     <label for="star-c"></label>
-                    <input type="radio" name="stars" id="star-d" value="2"  />
+                    <input type="radio" name="stars" id="star-d" value="2" required>
                     <label for="star-d"></label>
-                    <input type="radio" name="stars" id="star-e" value="1" required />
+                    <input type="radio" name="stars" id="star-e" value="1" required>
                     <label for="star-e"></label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>Date of Installation <span class="required">*</span> <input type="date" name="InstallationDate" id="installDate" required> </label>
+                <label for="installDate">Date of Installation <span class="required">*</span> <input type="date" name="InstallationDate" id="installDate" required> </label>
             </div>
 
             <div class="form-group">
                 <label>Which features did you find useful in the product? <br> <span class="features-options optional">(Check all that apply)</span></label>
-                <label for="durability"><input type="checkbox" id="durability" name="durability"value="durability">Durability</label>
+                <label for="durability"><input type="checkbox" id="durability" name="durability" value="durability">Durability</label>
                 
-                <label for="easeOfUse"><input type="checkbox" id="easeOfUse" name="easeOfUse"value="easeOfUse">Ease Of Use</label>
+                <label for="easeOfUse"><input type="checkbox" id="easeOfUse" name="easeOfUse" value="easeOfUse">Ease Of Use</label>
 
-                <label for="performance"><input type="checkbox" id="performance" name="performance"value="performance">Performance</label>
+                <label for="performance"><input type="checkbox" id="performance" name="performance" value="performance">Performance</label>
 
-                <label for="design"><input type="checkbox" id="design" name="design"value="design">Design</label>
+                <label for="design"><input type="checkbox" id="design" name="design" value="design">Design</label>
             </div>
 
             <div class="form-group">
