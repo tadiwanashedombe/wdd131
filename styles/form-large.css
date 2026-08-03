@@ -62,7 +62,8 @@ label {
 }
 
 .required {
-    color: red;
+    color: #a80000;
+    font-weight: bold;
 }
 
 .optional {
