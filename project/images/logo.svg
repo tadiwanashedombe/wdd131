@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4A76A"/>
+      <stop offset="100%" stop-color="#8B6B4B"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-color="#4A3828" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background Photos (scattered, tilted) -->
+  <!-- Photo 1 - landscape -->
+  <g transform="translate(30, 25) rotate(-12)">
+    <rect x="0" y="0" width="70" height="55" rx="6" fill="#C8AA7A" filter="url(#shadow)"/>
+    <rect x="5" y="5" width="60" height="45" rx="3" fill="#F5EDE0"/>
+    <circle cx="40" cy="20" r="10" fill="#FCD9A7" opacity="0.9"/>
+    <polygon points="10,40 30,18 45,40" fill="#B7A17C"/>
+    <polygon points="35,40 55,12 65,40" fill="#9B8970"/>
+  </g>
+
+  <!-- Photo 2 - portrait style -->
+  <g transform="translate(110, 15) rotate(8)">
+    <rect x="0" y="0" width="55" height="70" rx="6" fill="#B78A5B" filter="url(#shadow)"/>
+    <rect x="5" y="5" width="45" height="60" rx="3" fill="#FFFAF5"/>
+    <circle cx="27" cy="25" r="12" fill="#E7CFB0"/>
+    <rect x="10" y="42" width="35" height="18" rx="4" fill="#D4A76A"/>
+  </g>
+
+  <!-- Photo 3 - small square -->
+  <g transform="translate(25, 105) rotate(6)">
+    <rect x="0" y="0" width="50" height="50" rx="6" fill="#9B7A58" filter="url(#shadow)"/>
+    <rect x="4" y="4" width="42" height="42" rx="3" fill="#FFF5EC"/>
+    <circle cx="25" cy="25" r="14" fill="#FCD9A7"/>
+    <circle cx="20" cy="20" r="4" fill="white" opacity="0.6"/>
+  </g>
+
+  <!-- Photo 4 - wide -->
+  <g transform="translate(100, 100) rotate(-5)">
+    <rect x="0" y="0" width="75" height="45" rx="6" fill="#D4B68C" filter="url(#shadow)"/>
+    <rect x="4" y="4" width="67" height="37" rx="3" fill="#F5EDE0"/>
+    <polygon points="10,32 30,10 50,32" fill="#8B7B62"/>
+    <polygon points="40,32 60,8 70,32" fill="#6B5D48"/>
+    <circle cx="55" cy="15" r="8" fill="#FCD9A7" opacity="0.8"/>
+  </g>
+
+  <!-- Central bold "G" letterform -->
+  <text x="100" y="118" text-anchor="middle" font-family="'Georgia', 'Times New Roman', serif" font-weight="900" font-size="120" fill="url(#gGrad)" filter="url(#shadow)" stroke="#424242" stroke-width="3" paint-order="fill">G</text>
+
+  <!-- Subtle "TheGaLLeRY" text below -->
+  <text x="100" y="175" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', sans-serif" font-weight="700" font-size="18" fill="#4A3828" letter-spacing="3">TheGaLLeRY</text>
+
+</svg>

@@ -1,0 +1,13 @@
+@media only screen  and (max-width:900px){
+    nav li{
+        display: block;
+        flex :1 1 100%;
+    }
+
+    nav a{
+        text-align: center;
+    }
+    #menu{
+        display:none;
+    }
+}
