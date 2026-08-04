@@ -1,7 +1,14 @@
-const year = document.getElementById("year").textContent = new Date().getFullYear();
+const year = document.getElementById("year");
+year.textContent = new Date().getFullYear();
 const galleryContainer = document.querySelector(".gallery-container");
-const image = document.getElementsByClassName("image");
+const nav = document.querySelector("nav");
+const menu = document.querySelector("#menu");
+menu.addEventListener("click", () => {
+    nav.classList.toggle("show");
+    menu.classList.toggle("show");
+});
 
+const picturesCount = document.querySelector(".photosCount");
 const gallery = [
     {
         url: "images/aba-nigeria-temple.webp",
@@ -114,17 +121,7 @@ const gallery = [
         fileName: "rafting1"
     },
     {
-        url: "images/rafting1.webp",
-        description: "Rafting1",
-        fileName: "rafting1"
-    },
-    {
         url: "images/rafting2.jpg",
-        description: "Rafting2",
-        fileName: "rafting2"
-    },
-    {
-        url: "images/rafting2.webp",
         description: "Rafting2",
         fileName: "rafting2"
     },
@@ -134,17 +131,7 @@ const gallery = [
         fileName: "rafting3"
     },
     {
-        url: "images/rafting3.webp",
-        description: "Rafting3",
-        fileName: "rafting3"
-    },
-    {
         url: "images/rafting4.jpg",
-        description: "Rafting4",
-        fileName: "rafting4"
-    },
-    {
-        url: "images/rafting4.webp",
         description: "Rafting4",
         fileName: "rafting4"
     },
@@ -205,14 +192,23 @@ const gallery = [
     }
 ];
 
+if (picturesCount) {
+    picturesCount.textContent = gallery.length;
+
+}
+
 function displayGallery() {
+    galleryContainer.innerHTML = "";
+
     gallery.forEach(picture => {
         const img = document.createElement("picture");
-        img.innerHTML = `<img src="${picture.url}" alt="${picture.description}" class='image'>`;
+        img.innerHTML = `<img src="${picture.url}" alt="${picture.description}" class='image' loading='lazy'>`;
 
-        // image.addEventListener("click", () => {
-        //     showImage(picture.url,picture.description,picture.fileName);
-        // });
+        const image = img.querySelector("img");
+
+        image.addEventListener("click", () => {
+            showImage(picture.url, picture.description, picture.fileName);
+        });
 
         galleryContainer.appendChild(img);
 
@@ -220,9 +216,34 @@ function displayGallery() {
 
 }
 
-function showImage(url,description,fileName){
-    const imageOpen = document.createElement("div");
+function showImage(url, description = 'missing description', fileName) {
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox",
+        lightbox.innerHTML = `
+        <span class="close-lightbox">&times;</span>
+        <img src="${url}" alt="${description}" class="lightbox-image">
+        <div class="details">
+            <p class="lightbox-caption"><b>File Name: </b>${fileName}</p>
+            <p class="lightbox-caption"><b>Description: </b>${description}</p>
+        </div>
+        
 
+    `
+    const closeBtn = lightbox.querySelector(".close-lightbox");
+    closeBtn.addEventListener("click", () => {
+        lightbox.remove();
+    });
+
+    const closeWithEsc = (e) => {
+        if (e.key === "Escape") {
+            lightbox.remove();
+            document.removeEventListener("keydown", closeWithEsc);
+        }
+    };
+
+    document.addEventListener("keydown", closeWithEsc);
+
+    document.body.appendChild(lightbox);
 }
 
 displayGallery();

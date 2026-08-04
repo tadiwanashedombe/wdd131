@@ -6,46 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="alternate icon" href="images/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet">
 
     <title>TheGaLLeRY</title>
 
-    <meta name="description" content="This is the home page with all the photos and collections">
+    <meta name="description" content="This is the gallery page with all the photos and relative tools">
     <meta name="author" content="Tadiwanashe Dombe">
 
+    <link rel="stylesheet" href="styles/index-large.css">
+    <link rel="stylesheet" href="styles/index-medium.css">
     <link rel="stylesheet" href="styles/index.css">
+
     <script src="scripts/index.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <img src="images/logo.svg" alt="TheGaLLeRY logo" id="logo-image">
-        <h1>TheGaLLeRY</h1>
+     <header>
+        <div class="logo-group">
+            <img src="images/logo.svg" alt="TheGaLLeRY logo" id="logo-image">
+            <h1>TheGaLLeRY</h1>
+        </div>
+        <button id="menu" aria-label="Toggle navigation menu"></button>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="collection.html">Collections</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="manage.html">Manage</a></li>
+                <li><a href="manage.html" class="active">Manage</a></li>
             </ul>
         </nav>
+        <div class="mobile-menu">
+        <a href="index.html">
+            <span>
+                <img src="images/home.svg" alt="home icon">
+                <p>Home</p>
+            </span>
+        </a>
+
+        <a href="collection.html">
+            <span>
+                <img src="images/collection2.svg" alt="collections icon">
+                <p>Collections</p>
+            </span>
+        </a>
+
+        <a href="gallery.html">
+            <span>
+                <img src="images/gallery.svg" alt="gallery icon">
+                <p>Gallery</p>
+            </span>
+        </a>
+
+        <a href="manage.html">
+            <span class="active">
+                <img src="images/manage.svg" alt="manage icon">
+                <p>Manage</p>
+            </span>
+        </a>
+    </div>
     </header>
     <main>
-        <div class="collections">
-            <h2>TheCollections</h2>
-            <div class="collections-container">
-
-            </div>
-        </div>
-        <div class="gallery">
-            <h2>TheGallery</h2>
-            <div class="gallery-container">
-
-            </div>
-        </div>
-
+        
     </main>
     <footer>
-        <p>©️: <span id="year"></span> - TheGaLLeRY</p>
+        <p>©️<span id="year"></span> - TheGaLLeRY</p>
     </footer>
 </body>
 

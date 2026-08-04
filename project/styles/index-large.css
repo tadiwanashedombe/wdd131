@@ -8,6 +8,8 @@ body {
     background-color: #fff;
     color: #000;
     min-height: 100vh;
+    font-family: sans-serif;
+    padding-bottom: 4.5rem;
 }
 
 main {
@@ -41,9 +43,7 @@ header,
 footer {
     background-color: #bababa;
 }
-header,
-footer {
-    background-color: #bababa;
+header{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,18 +51,37 @@ footer {
     padding: .5rem 1rem;
     font-size: 1.7rem;
 }
+
+#menu{
+    display: none;
+    border: none;
+    background: none;
+    font-size: 3rem;
+    font-weight:bold;
+
+    text-decoration: none;
+    padding: .5rem 0.7rem;
+    color: #000;
+    cursor: pointer;
+}
+#menu::before{
+    content: "≡";
+}
+#menu.show::before {
+    content: "X";
+}
 nav ul {
     display: flex;
     gap: 1rem;
+    flex-direction: row;
+    font-family: serif;
 }
 
 nav li {
-    display: flex;
-    justify-content: space-around;
     list-style: none;
 }
 
-nav a {
+a {
     text-decoration: none;
     color: #000;
     padding: .7rem;
@@ -77,14 +96,39 @@ nav a:hover {
     background-color: #92929292;
     border-radius: 5px;
 }
+.gallery-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gallery-header .photosCount{
+    background-color: #92929292;
+    padding: .4rem .7rem;
+    border-radius: 12px;
+    font-weight: bold;
+}
+.gallery-header p{
+    font-size: 1.1rem;
+}
+.gallery-header .tools{
+    cursor: pointer;
+}
+.gallery-header img{
+    width: 3rem;
+    padding: .3rem;
+    margin: .2rem;
+    background-color: #929292;
+    border-radius: 1rem;
+
+}
 div h2{
     font-size: xx-large;
     margin:1.2rem 0 1rem 0;
 }
 
 .collections-container img{
-    width: clamp(16rem, 25%,30rem);
-    min-height: 10rem;
+    width: clamp(10.8rem, 25%,30rem);
+    min-height: 8rem;
     max-height: 18rem;
     border-radius: 10px;
     object-fit: cover;
@@ -115,9 +159,93 @@ div h2{
     cursor: pointer;
 }
 
+.mobile-menu{
+    justify-content: space-around;
+    align-items: center;
+    background-color: #92929292;
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    position: fixed;
+    bottom: .3rem;
+    margin-left: 0;
+    width: 92%;
+    height: 3.9rem;
+    display: none;
+
+}
+.mobile-menu a{
+    padding: 0;
+    margin: .9rem 0;
+}
+.mobile-menu span{
+    display: flex;
+    align-items: center;
+}
+
+.mobile-menu .active{
+    background-color: #bdbdbd;
+    box-shadow: 1px 1px 10px #464545;
+    padding: .4rem .3rem;
+    border-radius: 4rem;
+    color: #000;
+}
+
+.mobile-menu .active p{
+    display: block;
+}
+.mobile-menu p{
+    font-weight: bold;
+    display: none;
+}
+.mobile-menu img{
+    width: 2.5rem;
+}
+
 footer{
     display: flex;
     padding: 1.4rem 0;
     justify-content: center;
     font-weight: 600;
+}
+
+.lightbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.lightbox-image{
+    max-width: 95vw;
+    max-height: 85vh;
+    object-fit: contain;
+}
+.lightbox-caption{
+    color: #fff;
+    margin-top: .8rem;
+    font-size: clamp(1rem,2rem,1.4rem);
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.close-lightbox{
+    position:absolute;
+    top: 0;
+    right: 1rem;
+    color: #fff;
+    font-size: clamp(2rem, 3rem, 5rem);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+body:has(.lightbox){
+    overflow: hidden;
 }

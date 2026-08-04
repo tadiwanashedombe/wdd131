@@ -1,0 +1,13 @@
+@media only screen and (max-width:560px) {
+    #menu,
+    .collections-container img:nth-child(3),
+    .collections-container img:nth-child(4){
+        display: none;
+    }
+
+    .mobile-menu{
+    display: flex;
+
+    }
+    
+}

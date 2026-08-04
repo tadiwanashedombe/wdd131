@@ -20,3 +20,5 @@ store the state of the lists(localStorage)
 -in the mobileview use :nth-child to hide some of the collections
 
 -add an event listner for on click to make igame display if fullview with100% height100%>show some image detail like filename or even description
+
+-in the index.html for the collections cover photos use the image @@ 0 index of the array

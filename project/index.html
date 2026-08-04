@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet">
-    
+
     <title>TheGaLLeRY</title>
 
     <meta name="description" content="This is the home page with all the photos and collections">
@@ -28,7 +28,7 @@
             <img src="images/logo.svg" alt="TheGaLLeRY logo" id="logo-image">
             <h1>TheGaLLeRY</h1>
         </div>
-        <a href="#" id="menu"></a>
+        <button id="menu" aria-label="Toggle navigation menu"></button>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -37,6 +37,35 @@
                 <li><a href="manage.html">Manage</a></li>
             </ul>
         </nav>
+        <div class="mobile-menu">
+        <a href="index.html">
+            <span class="active">
+                <img src="images/home.svg" alt="home icon">
+                <p>Home</p>
+            </span>
+        </a>
+
+        <a href="collection.html">
+            <span>
+                <img src="images/collection2.svg" alt="collections icon">
+                <p>Collections</p>
+            </span>
+        </a>
+
+        <a href="gallery.html">
+            <span>
+                <img src="images/gallery.svg" alt="gallery icon">
+                <p>Gallery</p>
+            </span>
+        </a>
+
+        <a href="manage.html">
+            <span>
+                <img src="images/manage.svg" alt="manage icon">
+                <p>Manage</p>
+            </span>
+        </a>
+    </div>
     </header>
     <main>
         <div class="collections">
@@ -50,14 +79,15 @@
 
             </div>
         </div>
-       
+
         <div class="gallery">
             <h2>TheGallery</h2>
             <div class="gallery-container">
-                
+
             </div>
         </div>
     </main>
+    
     <footer>
         <p>©️<span id="year"></span> - TheGaLLeRY</p>
     </footer>
