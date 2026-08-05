@@ -3,6 +3,95 @@ year.textContent = new Date().getFullYear();
 const galleryContainer = document.querySelector(".gallery-container");
 const nav = document.querySelector("nav");
 const menu = document.querySelector("#menu");
+const addCollectionBtn = document.querySelector(".add-collection");
+const imageGrid = document.getElementById("imageGrid");
+const selectedCount = document.getElementById("selectedCount");
+const collectionForm = document.getElementById("collectionForm");
+
+let selectedImages = new Set();
+
+if(addCollectionBtn){
+    const createContainer = document.querySelector(".create-container");
+
+    addCollectionBtn.addEventListener("click",()=>{
+        createContainer.classList.toggle("visible");
+        addCollectionBtn.classList.toggle("visible");
+    });
+}
+function displayImagePicker() {
+    if(!imageGrid)return;
+    imageGrid.innerHTML = '';
+
+    gallery.forEach((picture, index) => {
+        const div = document.createElement("div");
+        div.className = "image-option";
+        div.setAttribute("data-index", index);
+
+        div.innerHTML = `
+            <img src='${picture.url}' alt='${picture.description}' loading='lazy'>
+            <span class='checkmark'>✓</span>
+        `;
+
+        div.addEventListener("click", () => toggleImageSelected(div, picture));
+
+        imageGrid.appendChild(div);
+    });
+}
+
+function toggleImageSelected(element, picture) {
+    if (selectedImages.has(picture)) {
+        selectedImages.delete(picture);
+        element.classList.remove("selected");
+    }
+    else {
+        selectedImages.add(picture);
+        element.classList.add("selected");
+    }
+
+    selectedCount.textContent = selectedImages.size;
+}
+if (collectionForm) {
+
+    collectionForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const collectionName = document.getElementById("collectionName").value.trim();
+
+        if (!collectionName) {
+            alert("Please enter a collection name");
+            return;
+        }
+
+        if (selectedImages.size === 0) {
+            alert("Please select at least one photo");
+            return;
+        }
+
+        const newCollection = {
+            id: Date.now(),
+            name: collectionName,
+            photos: Array.from(selectedImages).map(pic => ({
+                url: pic.url,
+                fileName: pic.fileName,
+                dateAdded: new Date().toISOString()
+            })),
+            dateCreated: new Date().toISOString()
+        };
+
+        const collections = JSON.parse(localStorage.getItem("collections")) || [];
+        collections.push(newCollection);
+        localStorage.setItem("collections", JSON.stringify(collections));
+
+        collectionForm.reset();
+        selectedImages.clear();
+        document.querySelectorAll(".image-option").forEach(el => el.classList.remove("selected"));
+        selectedCount.textContent = "0";
+
+        alert(`Collection "${collectionName}" created with ${newCollection.photos.length} photos!`);
+    });
+}
+
+
 menu.addEventListener("click", () => {
     nav.classList.toggle("show");
     menu.classList.toggle("show");
@@ -19,11 +108,6 @@ const gallery = [
         url: "images/abidjan-ivory-coast-templewebp",
         description: "Abidjan Ivory Coast Temple",
         fileName: "abidjan-ivory-coast-templewebp"
-    },
-    {
-        url: "images/add collection.svg",
-        description: "Add Collection",
-        fileName: "add collection"
     },
     {
         url: "images/anchorage-temple.webp",
@@ -51,64 +135,14 @@ const gallery = [
         fileName: "castle"
     },
     {
-        url: "images/collage-frame-svgrepo-com.svg",
-        description: "Collage Frame Svg Repo Com",
-        fileName: "collage-frame-svgrepo-com"
-    },
-    {
-        url: "images/collection2.svg",
-        description: "Collection2",
-        fileName: "collection2"
-    },
-    {
-        url: "images/collection.svg",
-        description: "Collection",
-        fileName: "collection"
-    },
-    {
-        url: "images/dark-theme.svg",
-        description: "Dark Theme",
-        fileName: "dark-theme"
-    },
-    {
-        url: "images/delete.svg",
-        description: "Delete",
-        fileName: "delete"
-    },
-    {
-        url: "images/gallery.svg",
-        description: "Gallery",
-        fileName: "gallery"
-    },
-    {
         url: "images/harare-small.webp",
         description: "Harare Small",
         fileName: "harare-small"
     },
     {
-        url: "images/home.svg",
-        description: "Home",
-        fileName: "home"
-    },
-    {
-        url: "images/light-theme.svg",
-        description: "Light Theme",
-        fileName: "light-theme"
-    },
-    {
         url: "images/logo.png",
         description: "Logo",
         fileName: "logo"
-    },
-    {
-        url: "images/logo.svg",
-        description: "Logo",
-        fileName: "logo"
-    },
-    {
-        url: "images/plus-svgrepo-com.svg",
-        description: "Plus Svg Repo Com",
-        fileName: "plus-svgrepo-com"
     },
     {
         url: "images/racing.webp",
@@ -197,22 +231,25 @@ if (picturesCount) {
 
 }
 
-function displayGallery() {
-    galleryContainer.innerHTML = "";
+function displayGallery(container, arr) {
+    if (container) {
 
-    gallery.forEach(picture => {
-        const img = document.createElement("picture");
-        img.innerHTML = `<img src="${picture.url}" alt="${picture.description}" class='image' loading='lazy'>`;
+        container.innerHTML = "";
 
-        const image = img.querySelector("img");
+        arr.forEach(picture => {
+            const img = document.createElement("picture");
+            img.innerHTML = `<img src="${picture.url}" alt="${picture.description}" class='image' loading='lazy'>`;
 
-        image.addEventListener("click", () => {
-            showImage(picture.url, picture.description, picture.fileName);
+            const image = img.querySelector("img");
+
+            image.addEventListener("click", () => {
+                showImage(picture.url, picture.description, picture.fileName);
+            });
+
+            container.appendChild(img);
+
         });
-
-        galleryContainer.appendChild(img);
-
-    });
+    }
 
 }
 
@@ -246,4 +283,9 @@ function showImage(url, description = 'missing description', fileName) {
     document.body.appendChild(lightbox);
 }
 
-displayGallery();
+displayGallery(galleryContainer, gallery);
+
+if (imageGrid) {
+    displayImagePicker();
+
+}

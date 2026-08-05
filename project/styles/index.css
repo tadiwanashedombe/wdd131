@@ -1,13 +1,28 @@
 @media only screen and (max-width:560px) {
+
     #menu,
     .collections-container img:nth-child(3),
-    .collections-container img:nth-child(4){
+    .collections-container img:nth-child(4) {
         display: none;
     }
 
-    .mobile-menu{
-    display: flex;
-
+    .mobile-menu {
+        display: flex;
+        width: 90%;
     }
-    
+
+    .gallery-container{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+    }
+
+    .gallery-container img{
+        width: 6rem;
+        height: 5.8rem;
+        object-fit: cover;
+    }
+    .gallery-container picture{
+        margin:0;
+    }
+
 }

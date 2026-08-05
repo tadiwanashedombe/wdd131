@@ -38,56 +38,69 @@
             </ul>
         </nav>
         <div class="mobile-menu">
-        <a href="index.html">
-            <span>
-                <img src="images/home.svg" alt="home icon">
-                <p>Home</p>
-            </span>
-        </a>
+            <a href="index.html">
+                <span>
+                    <img src="images/home.svg" alt="home icon">
+                    <p>Home</p>
+                </span>
+            </a>
 
-        <a href="collection.html">
-            <span class="active">
-                <img src="images/collection2.svg" alt="collections icon">
-                <p>Collections</p>
-            </span>
-        </a>
+            <a href="collection.html">
+                <span class="active">
+                    <img src="images/collection2.svg" alt="collections icon">
+                    <p>Collections</p>
+                </span>
+            </a>
 
-        <a href="gallery.html">
-            <span>
-                <img src="images/gallery.svg" alt="gallery icon">
-                <p>Gallery</p>
-            </span>
-        </a>
+            <a href="gallery.html">
+                <span>
+                    <img src="images/gallery.svg" alt="gallery icon">
+                    <p>Gallery</p>
+                </span>
+            </a>
 
-        <a href="manage.html">
-            <span>
-                <img src="images/manage.svg" alt="manage icon">
-                <p>Manage</p>
-            </span>
-        </a>
-    </div>
+            <a href="manage.html">
+                <span>
+                    <img src="images/manage.svg" alt="manage icon">
+                    <p>Manage</p>
+                </span>
+            </a>
+        </div>
     </header>
     <main>
         <div class="collections">
-            <h2>TheCollections</h2>
-            <div class="collections-container">
-                <img src="images/aba-nigeria-temple.webp" alt="">
-                <img src="images/aba-nigeria-temple.webp" alt="">
-
-                <img src="images/aba-nigeria-temple.webp" alt="">
-                <img src="images/aba-nigeria-temple.webp" alt="">
-
+            <div class="collection-header">
+                <h2>TheCollections</h2>
+                <button class="add-collection" title="Create Collection"></button>
             </div>
-        </div>
 
-        <div class="gallery">
-            <h2>TheGallery</h2>
-            <div class="gallery-container">
+            <div class="create-container">
+                <form action="#" id="collectionForm" class="colection-form">
+                    <div class="form-group">
+                        <label for="collectionName">Collection Name</label>
+                        <input type="text" id="collectionName" required placeholder="My collection">
+                    </div>
+
+                    <div class="image-picker">
+                        <p>Select photos to include:</p>
+                        <div class="image-grid" id="imageGrid">
+
+                            <!-- images -->
+
+                        </div>
+                    </div>
+                    <div class="selected-info">
+                        <span id="selectedCount">0</span> photos selected
+                    </div>
+                    <button type="submit" id="createCollectionBtn">Create Collection</button>
+                </form>
+            </div>
+            <div class="collections-container">
 
             </div>
         </div>
     </main>
-    
+
     <footer>
         <p>©️<span id="year"></span> - TheGaLLeRY</p>
     </footer>

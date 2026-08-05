@@ -4,7 +4,7 @@ in the mobile view they are already showing the options to delete
 
 index + 3pages{
 	gallery -> see all photos{no of all photos}
-	manage -> create collections,upload photos{accepts links as the upload form}
+	manage -> ,upload photos{accepts links as the upload form}
 	collection -> deal with one selected collection,view all selections  
 }
 
