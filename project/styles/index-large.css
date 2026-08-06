@@ -440,6 +440,7 @@ div h2 {
     width: 92%;
     height: 3.9rem;
     display: none;
+    z-index: 1000;
 
 }
 
