@@ -117,20 +117,25 @@ nav a:hover {
     background-color: #565658;
     color: #bababa;
 }
-
+.collection-card .default-thumbnail{
+    width: 12rem;
+    height: 12rem;
+}
 .create-container {
     display: none;
-    background-color: #2a2a2c7a;
-    width: 75%;
+    background-color: #6d6d6d;
+    width: 50%;
     min-height: 12rem;
+    max-height: 75vh;
     border-radius: 10px;
     padding: .4rem;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     overflow-y: auto;
-    margin-left: auto;
     color: #000;
+    position: absolute;
+    right: 2rem;
 }
 
 .create-container.visible {
@@ -175,7 +180,42 @@ nav a:hover {
     border-radius: 5px;
     font-size: 1rem;
 }
+.manage-collections-container,
+.manage-gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+}
 
+.manage-card,
+.manage-photo {
+    position: relative;
+}
+
+.manage-photo img {
+    width: 10rem;
+    height: 8rem;
+    object-fit: cover;
+}
+
+.delete-btn {
+    position: absolute;
+    top: .3rem;
+    right: .3rem;
+    background: rgba(0,0,0,.6);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
 .image-picker p {
     margin: .6rem 0 .2rem 0;
     font-size: 1.1rem;
@@ -247,7 +287,75 @@ nav a:hover {
 #createCollectionBtn:hover {
     background-color: #d4d4d4;
 }
+.collection-card{
+    width: clamp(10.8rem, 25%, 30rem);
+    min-height: 8rem;
+    max-height: 18rem;
+    border-radius: 10px;
+    object-fit: cover;
+}
 
+.collection-card img{
+    width:100%;
+    min-height:8rem;
+    max-height: 18rem;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.collection-info{
+    padding:.5rem;
+}
+
+.collection-info h3{
+    font-size: 1.1rem;
+}
+
+.collection-info p{
+    color: #565658;
+}
+
+.collection-overlay{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.95);
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    inset: 0;
+    padding: 2rem 0;
+}
+
+.collection-overlay-content{
+    width: 90%;
+    padding:2rem;
+    color: #fff;
+}
+
+.collection-photos-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.collection-photos-grid img{
+    height: 15rem;
+}
+.collection-photo{
+    margin: .1rem;
+}
+.collection-photo:hover{
+    opacity:.7;
+}
+
+.close-overlay{
+    position: absolute;
+    top:1rem;
+    right: 1rem;
+    color: #fff;
+    font-size: 3rem;
+    cursor: pointer;
+}
 .gallery-header {
     display: flex;
     align-items: center;
@@ -290,7 +398,9 @@ div h2 {
     border-radius: 10px;
     object-fit: cover;
 }
-
+.collections{
+    position: relative;
+}
 .collections-container {
     justify-content: flex-start;
     display: flex;

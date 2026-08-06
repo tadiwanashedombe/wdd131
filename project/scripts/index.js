@@ -7,22 +7,162 @@ const addCollectionBtn = document.querySelector(".add-collection");
 const imageGrid = document.getElementById("imageGrid");
 const selectedCount = document.getElementById("selectedCount");
 const collectionForm = document.getElementById("collectionForm");
+const collectionsContainer = document.querySelector(".collections-container");
+const manageCollectionsContainer = document.getElementById("manageCollectionsContainer");
+const manageGalleryContainer = document.getElementById("manageGalleryContainer");
+
+function displayManageCollections() {
+    if (!manageCollectionsContainer) return;
+
+    const collections = JSON.parse(localStorage.getItem("collections")) || [];
+    manageCollectionsContainer.innerHTML = "";
+
+    if (collections.length === 0) {
+        manageCollectionsContainer.innerHTML = "<p>No collections yet.</p>";
+        return;
+    }
+
+    collections.forEach(collection => {
+        const thumbnail = collection.photos[0]?.url || "images/collection.svg";
+        const card = document.createElement("div");
+        card.className = "collection-card manage-card";
+        card.innerHTML = `
+            <img src="${thumbnail}" alt="collection" loading="lazy">
+            <div class="collection-info">
+                <h3>${collection.name}</h3>
+                <p>${collection.photos.length} photos</p>
+            </div>
+            <button class="delete-btn" title="Delete collection">🗑</button>
+        `;
+
+        card.querySelector(".delete-btn").addEventListener("click", () => {
+            if (confirm(`Delete collection "${collection.name}"? This can't be undone.`)) {
+                deleteCollection(collection.id);
+                displayManageCollections();
+            }
+        });
+
+        manageCollectionsContainer.appendChild(card);
+    });
+}
+
+function displayManagePhotos() {
+    if (!manageGalleryContainer) return;
+
+    manageGalleryContainer.innerHTML = "";
+
+    getActiveGallery().forEach(picture => {
+        const div = document.createElement("div");
+        div.className = "manage-photo";
+        div.innerHTML = `
+            <img src="${picture.url}" alt="${picture.description}" loading="lazy">
+            <button class="delete-btn" title="Remove photo">🗑</button>
+        `;
+
+        div.querySelector(".delete-btn").addEventListener("click", () => {
+            if (confirm(`Remove "${picture.description}" from your gallery?`)) {
+                deletePhoto(picture.fileName);
+                displayManagePhotos();
+            }
+        });
+
+        manageGalleryContainer.appendChild(div);
+    });
+}
+
+
+
+function displayCollections() {
+    if (!collectionsContainer) return;
+
+    const collections = JSON.parse(localStorage.getItem("collections")) || [];
+
+    collectionsContainer.innerHTML = '';
+
+    if (collections.length === 0) {
+        if (window.location.pathname.includes('index.html')) {
+            const card = document.createElement("div");
+            card.className = "collection-card";
+            card.innerHTML = `
+            <img src="images/empty-collection.svg"  alt="collection" loading="lazy" class="default-thumbnail">
+            <div class="collection-info" >
+                <h3>No collections yet</h3>
+            </div>
+            `;
+            collectionsContainer.appendChild(card);
+
+        }
+        else {
+            collectionsContainer.innerHTML = "<p>No collections yet. Create + to create one</p>";
+            return;
+        }
+    }
+
+    collections.forEach(collection => {
+        const thumbnail = collection.photos[0]?.url || "images/collection.svg";
+        const card = document.createElement("div");
+        card.className = "collection-card";
+        card.innerHTML = `
+            <img src="${thumbnail}" alt="collection" loading="lazy">
+            <div class="collection-info" >
+                <h3>${collection.name}</h3>
+                <p>${collection.photos.length} photos</p>
+            </div>
+        `;
+        card.addEventListener("click", () => showCollectionPhotos(collection));
+
+        collectionsContainer.appendChild(card);
+    });
+}
+
+function showCollectionPhotos(collection) {
+    const overlay = document.createElement("div");
+    overlay.className = "collection-overlay";
+    overlay.innerHTML = `
+        <div class="collections-overlay-content" >
+            <span class="close-overlay" >x</span>
+            <h2>${collection.name}</>
+            <p> ${collection.photos.length} photos</p>
+            <div class="collection-photos-grid">
+                ${collection.photos.map(p => `<img src="${p.url}" alt="${p.fileName}" class="collection-photo" loading="lazy" >`).join("")}
+            </div>
+        </div>
+    `;
+
+    const close = () => { overlay.remove(); document.body.style.overflow = ""; };
+
+    overlay.querySelector(".close-overlay").addEventListener("click", close);
+    overlay.addEventListener("click", e => { if (e.target == overlay) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); }, { once: true });
+
+    overlay.querySelectorAll(".collection-photo").forEach(img => {
+        img.addEventListener("click", () => {
+            const pic = collection.photos.find(p => img.src.includes(p.fileName));
+            if (pic) {
+                showImage(pic.url, pic.fileName, pic.fileName);
+            }
+        });
+    });
+
+    document.body.style.overflow = "hidden";
+    document.body.appendChild(overlay);
+}
 
 let selectedImages = new Set();
 
-if(addCollectionBtn){
+if (addCollectionBtn) {
     const createContainer = document.querySelector(".create-container");
 
-    addCollectionBtn.addEventListener("click",()=>{
+    addCollectionBtn.addEventListener("click", () => {
         createContainer.classList.toggle("visible");
         addCollectionBtn.classList.toggle("visible");
     });
 }
 function displayImagePicker() {
-    if(!imageGrid)return;
+    if (!imageGrid) return;
     imageGrid.innerHTML = '';
 
-    gallery.forEach((picture, index) => {
+    getActiveGallery().forEach((picture, index) => {
         const div = document.createElement("div");
         div.className = "image-option";
         div.setAttribute("data-index", index);
@@ -226,8 +366,28 @@ const gallery = [
     }
 ];
 
+function getActiveGallery() {
+    const deletedPhotos = JSON.parse(localStorage.getItem("deletedPhotos")) || [];
+    return gallery.filter(picture => !deletedPhotos.includes(picture.fileName));
+}
+
+function deletePhoto(fileName) {
+    const deletedPhotos = JSON.parse(localStorage.getItem("deletedPhotos")) || [];
+    if (!deletedPhotos.includes(fileName)) {
+        deletedPhotos.push(fileName);
+        localStorage.setItem("deletedPhotos", JSON.stringify(deletedPhotos));
+    }
+}
+
+function deleteCollection(id) {
+    let collections = JSON.parse(localStorage.getItem("collections")) || [];
+    collections = collections.filter(c => c.id !== id);
+    localStorage.setItem("collections", JSON.stringify(collections));
+
+}
+
 if (picturesCount) {
-    picturesCount.textContent = gallery.length;
+    picturesCount.textContent = getActiveGallery().length;
 
 }
 
@@ -263,8 +423,6 @@ function showImage(url, description = 'missing description', fileName) {
             <p class="lightbox-caption"><b>File Name: </b>${fileName}</p>
             <p class="lightbox-caption"><b>Description: </b>${description}</p>
         </div>
-        
-
     `
     const closeBtn = lightbox.querySelector(".close-lightbox");
     closeBtn.addEventListener("click", () => {
@@ -283,9 +441,12 @@ function showImage(url, description = 'missing description', fileName) {
     document.body.appendChild(lightbox);
 }
 
-displayGallery(galleryContainer, gallery);
+displayGallery(galleryContainer, getActiveGallery());
 
 if (imageGrid) {
     displayImagePicker();
-
 }
+
+displayCollections();
+displayManageCollections();
+displayManagePhotos();
