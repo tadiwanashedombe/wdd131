@@ -27,7 +27,7 @@ function displayManageCollections() {
         const card = document.createElement("div");
         card.className = "collection-card manage-card";
         card.innerHTML = `
-            <img src="${thumbnail}" alt="collection" loading="lazy">
+            <img src="${thumbnail}" alt="collection" loading="lazy" width="200" height="150">
             <div class="collection-info">
                 <h3>${collection.name}</h3>
                 <p>${collection.photos.length} photos</p>
@@ -55,7 +55,7 @@ function displayManagePhotos() {
         const div = document.createElement("div");
         div.className = "manage-photo";
         div.innerHTML = `
-            <img src="${picture.url}" alt="${picture.description}" loading="lazy">
+            <img src="${picture.url}" alt="${picture.description}" loading="lazy" width="80" height="80">
             <button class="delete-btn" title="Remove photo">🗑</button>
         `;
 
@@ -70,8 +70,6 @@ function displayManagePhotos() {
     });
 }
 
-
-
 function displayCollections() {
     if (!collectionsContainer) return;
 
@@ -84,7 +82,7 @@ function displayCollections() {
             const card = document.createElement("div");
             card.className = "collection-card";
             card.innerHTML = `
-            <img src="images/empty-collection.svg"  alt="collection" loading="lazy" class="default-thumbnail">
+            <img src="images/empty-collection.svg"  alt="collection" loading="lazy" class="default-thumbnail" width="300" height="200">
             <div class="collection-info" >
                 <h3>No collections yet</h3>
             </div>
@@ -103,7 +101,7 @@ function displayCollections() {
         const card = document.createElement("div");
         card.className = "collection-card";
         card.innerHTML = `
-            <img src="${thumbnail}" alt="collection" loading="lazy">
+            <img src="${thumbnail}" alt="collection" loading="lazy" width="80" height="80">
             <div class="collection-info" >
                 <h3>${collection.name}</h3>
                 <p>${collection.photos.length} photos</p>
@@ -124,7 +122,7 @@ function showCollectionPhotos(collection) {
             <h2>${collection.name}</>
             <p> ${collection.photos.length} photos</p>
             <div class="collection-photos-grid">
-                ${collection.photos.map(p => `<img src="${p.url}" alt="${p.fileName}" class="collection-photo" loading="lazy" >`).join("")}
+                ${collection.photos.map(p => `<img src="${p.url}" alt="${p.fileName}" class="collection-photo" loading="lazy" width="200" height="150">`).join("")}
             </div>
         </div>
     `;
@@ -168,7 +166,7 @@ function displayImagePicker() {
         div.setAttribute("data-index", index);
 
         div.innerHTML = `
-            <img src='${picture.url}' alt='${picture.description}' loading='lazy'>
+            <img src='${picture.url}' alt='${picture.description}' loading='lazy' width="80" height="80">
             <span class='checkmark'>✓</span>
         `;
 
@@ -398,19 +396,16 @@ function displayGallery(container, arr) {
 
         arr.forEach(picture => {
             const img = document.createElement("picture");
-            img.innerHTML = `<img src="${picture.url}" alt="${picture.description}" class='image' loading='lazy'>`;
+            img.innerHTML = `<img src="${picture.url}" alt="${picture.description}" class='image' width="200" height="150" loading='lazy'>`;
 
             const image = img.querySelector("img");
 
             image.addEventListener("click", () => {
                 showImage(picture.url, picture.description, picture.fileName);
             });
-
             container.appendChild(img);
-
         });
     }
-
 }
 
 function showImage(url, description = 'missing description', fileName) {

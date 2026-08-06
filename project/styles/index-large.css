@@ -423,6 +423,7 @@ div h2 {
 .gallery-container img {
     height: 10rem;
     width: auto;
+    aspect-ratio: auto;
     cursor: pointer;
 }
 
